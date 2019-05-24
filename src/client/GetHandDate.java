@@ -36,50 +36,18 @@ public class GetHandDate {
     protected String arg0;
     protected String arg1;
 
-    /**
-     * ��ȡarg0���Ե�ֵ��
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
-     */
     public String getArg0() {
         return arg0;
     }
 
-    /**
-     * ����arg0���Ե�ֵ��
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
-     */
     public void setArg0(String value) {
         this.arg0 = value;
     }
 
-    /**
-     * ��ȡarg1���Ե�ֵ��
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
-     */
     public String getArg1() {
         return arg1;
     }
 
-    /**
-     * ����arg1���Ե�ֵ��
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
-     */
     public void setArg1(String value) {
         this.arg1 = value;
     }

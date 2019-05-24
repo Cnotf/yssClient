@@ -35,26 +35,10 @@ public class GetBiDateResponse {
     @XmlElement(name = "return")
     protected String _return;
 
-    /**
-     * ��ȡreturn���Ե�ֵ��
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
-     */
     public String getReturn() {
         return _return;
     }
 
-    /**
-     * ����return���Ե�ֵ��
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
-     */
     public void setReturn(String value) {
         this._return = value;
     }

@@ -27,7 +27,7 @@ import javax.xml.bind.annotation.XmlType;
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "getganddateresponse", propOrder = {
+@XmlType(name = "gethanddateresponse", propOrder = {
     "_return"
 })
 public class GetHandDateResponse {
@@ -35,26 +35,10 @@ public class GetHandDateResponse {
     @XmlElement(name = "return")
     protected String _return;
 
-    /**
-     * ��ȡreturn���Ե�ֵ��
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
-     */
     public String getReturn() {
         return _return;
     }
 
-    /**
-     * ����return���Ե�ֵ��
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
-     */
     public void setReturn(String value) {
         this._return = value;
     }
