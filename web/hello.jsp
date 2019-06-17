@@ -15,6 +15,8 @@
       <div class="gcs-login-container">
         <button id="bi" onclick="tobijsp()" class="btn-login">报表拍照界面</button>
         <button id="photo" onclick="toPhotojsp()" class="btn-login">手工拍照界面</button>
+        <button id="trustee" onclick="toTrusteeFeejsp()" class="btn-login">托管费信息录入</button>
+        <button id="trusteeFee" onclick="toTrusteeFeeEasyUIjsp()" class="btn-login">托管费信息录入</button>
       </div>
     </div>
   </div>
@@ -25,6 +27,12 @@
     }
     function toPhotojsp() {
         window.location.href = "handPhoto.jsp";
+    }
+    function toTrusteeFeejsp() {
+        window.location.href = "trusteeFee.jsp";
+    }
+    function toTrusteeFeeEasyUIjsp() {
+        window.location.href = "trusteeFeeEasyUI.jsp";
     }
 </script>
 </html>

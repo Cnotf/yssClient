@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8">
   <title>报表拍照界面</title>
-  <link href="css/hello.css" rel="stylesheet" type="text/css" />
+  <link href="css/hello.css?v=1.1.0" rel="stylesheet" type="text/css" />
 </head>
 <body>
 <form action="<%=request.getContextPath()%>/biPhoto" method="post">
@@ -15,6 +15,7 @@
       </div>
       <div class="gcs-login-container">
         <table>
+
           <tr>
             <td>
               开始拍照日期：<span style="color:red;">*</span>
@@ -41,6 +42,14 @@
             </td>
             <td>
               <input type="date" name = "endAccountDate" class="data-input" required="required">
+            </td>
+          </tr>
+          <tr>
+            <td>
+              报表名称：<span style="color:red;">*</span>
+            </td>
+            <td colspan="3">
+              <input type="text" name="biName" class="text-input" required="required"/>
             </td>
           </tr>
         </table>

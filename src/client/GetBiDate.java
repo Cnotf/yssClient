@@ -16,11 +16,7 @@ import javax.xml.bind.annotation.XmlType;
  *   &lt;complexContent&gt;
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType"&gt;
  *       &lt;sequence&gt;
- *         &lt;element name="arg0" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/&gt;
- *         &lt;element name="arg1" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/&gt;
- *         &lt;element name="arg2" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/&gt;
- *         &lt;element name="arg3" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/&gt;
- *         &lt;element name="arg4" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/&gt;
+ *         &lt;element name="arg0" type="{http://com.yss.hello.service}biDateInfo" minOccurs="0"/&gt;
  *       &lt;/sequence&gt;
  *     &lt;/restriction&gt;
  *   &lt;/complexContent&gt;
@@ -31,58 +27,34 @@ import javax.xml.bind.annotation.XmlType;
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "getbidate", propOrder = {
-    "arg0",
-    "arg1",
-    "arg2",
-    "arg3",
-    "arg4"
+    "arg0"
 })
 public class GetBiDate {
 
-    protected String arg0;
-    protected String arg1;
-    protected String arg2;
-    protected String arg3;
-    protected String arg4;
+    protected BiDateInfo arg0;
 
-    public String getArg0() {
+    /**
+     * ��ȡarg0���Ե�ֵ��
+     * 
+     * @return
+     *     possible object is
+     *     {@link BiDateInfo }
+     *     
+     */
+    public BiDateInfo getArg0() {
         return arg0;
     }
 
-    public void setArg0(String value) {
+    /**
+     * ����arg0���Ե�ֵ��
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link BiDateInfo }
+     *     
+     */
+    public void setArg0(BiDateInfo value) {
         this.arg0 = value;
-    }
-
-    public String getArg1() {
-        return arg1;
-    }
-
-    public void setArg1(String value) {
-        this.arg1 = value;
-    }
-
-    public String getArg2() {
-        return arg2;
-    }
-
-    public void setArg2(String value) {
-        this.arg2 = value;
-    }
-
-    public String getArg3() {
-        return arg3;
-    }
-
-    public void setArg3(String value) {
-        this.arg3 = value;
-    }
-
-    public String getArg4() {
-        return arg4;
-    }
-
-    public void setArg4(String value) {
-        this.arg4 = value;
     }
 
 }

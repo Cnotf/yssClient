@@ -28,6 +28,8 @@ public class ObjectFactory {
     private final static QName _GetBiDateResponse_QNAME = new QName("http://com.yss.hello.service", "getBiDateResponse");
     private final static QName _GetHandDate_QNAME = new QName("http://com.yss.hello.service", "getHandDate");
     private final static QName _GetHandDateResponse_QNAME = new QName("http://com.yss.hello.service", "getHandDateResponse");
+    private final static QName _GetTrusteeFeeData_QNAME = new QName("http://com.yss.hello.service", "getTrusteeFeeData");
+    private final static QName _GetTrusteeFeeDataResponse_QNAME = new QName("http://com.yss.hello.service", "getTrusteeFeeDataResponse");
 
     /**
      * Create a new ObjectFactory that can be used to create new instances of schema derived classes for package: service.hello.yss.com
@@ -69,6 +71,46 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link GetTrusteeFeeData }
+     * 
+     */
+    public GetTrusteeFeeData createGetTrusteeFeeData() {
+        return new GetTrusteeFeeData();
+    }
+
+    /**
+     * Create an instance of {@link GetTrusteeFeeDataResponse }
+     * 
+     */
+    public GetTrusteeFeeDataResponse createGetTrusteeFeeDataResponse() {
+        return new GetTrusteeFeeDataResponse();
+    }
+
+    /**
+     * Create an instance of {@link BiDateInfo }
+     * 
+     */
+    public BiDateInfo createBiDateInfo() {
+        return new BiDateInfo();
+    }
+
+    /**
+     * Create an instance of {@link HandDateInfo }
+     * 
+     */
+    public HandDateInfo createHandDateInfo() {
+        return new HandDateInfo();
+    }
+
+    /**
+     * Create an instance of {@link TrusteeFeeInfo }
+     * 
+     */
+    public TrusteeFeeInfo createTrusteeFeeInfo() {
+        return new TrusteeFeeInfo();
+    }
+
+    /**
      * Create an instance of {@link JAXBElement }{@code <}{@link GetBiDate }{@code >}}
      * 
      */
@@ -102,6 +144,24 @@ public class ObjectFactory {
     @XmlElementDecl(namespace = "http://com.yss.hello.service", name = "getHandDateResponse")
     public JAXBElement<GetHandDateResponse> createGetHandDateResponse(GetHandDateResponse value) {
         return new JAXBElement<GetHandDateResponse>(_GetHandDateResponse_QNAME, GetHandDateResponse.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link GetTrusteeFeeData }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://com.yss.hello.service", name = "getTrusteeFeeData")
+    public JAXBElement<GetTrusteeFeeData> createGetTrusteeFeeData(GetTrusteeFeeData value) {
+        return new JAXBElement<GetTrusteeFeeData>(_GetTrusteeFeeData_QNAME, GetTrusteeFeeData.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link GetTrusteeFeeDataResponse }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://com.yss.hello.service", name = "getTrusteeFeeDataResponse")
+    public JAXBElement<GetTrusteeFeeDataResponse> createGetTrusteeFeeDataResponse(GetTrusteeFeeDataResponse value) {
+        return new JAXBElement<GetTrusteeFeeDataResponse>(_GetTrusteeFeeDataResponse_QNAME, GetTrusteeFeeDataResponse.class, null, value);
     }
 
 }
