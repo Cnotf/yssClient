@@ -1,7 +1,7 @@
 package servlet;
 
-import client.*;
 import org.apache.commons.beanutils.BeanUtils;
+import saveclient.*;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -43,7 +43,7 @@ public class HandPhotoServlet extends HttpServlet {
             }
         } catch (Exception e){
             System.out.println(e.getMessage());
-            retVal = "handPhoto client deal exception,please contact administrator";
+            retVal = "handPhoto saveclient deal exception,please contact administrator";
         } finally {
             out.write( "<script>alert('"+retVal+"');history.go(-1);</script>");
             out.flush();
@@ -59,7 +59,7 @@ public class HandPhotoServlet extends HttpServlet {
      */
     public static String getHandDate(HandDateInfo handDateInfo) {
         YssWebServiceIService yssWebServiceIService = new YssWebServiceIService();
-        YssWebServiceWS yssWebServiceWSPort = yssWebServiceIService.getYssWebServiceWSPort();
-        return yssWebServiceWSPort.getHandDate(handDateInfo);
+        SaveWebServiceWS saveWebServiceWSPort = yssWebServiceIService.getSaveWebServiceWSPort();
+        return saveWebServiceWSPort.saveHandDate(handDateInfo);
     }
 }

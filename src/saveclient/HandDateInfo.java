@@ -1,5 +1,5 @@
 
-package client;
+package saveclient;
 
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
@@ -84,6 +84,7 @@ public class HandDateInfo {
         this.endHandDate = value;
     }
 
+
     @Override
     public String toString() {
         return "HandDateInfo{" +
@@ -91,5 +92,4 @@ public class HandDateInfo {
                 ", endHandDate='" + endHandDate + '\'' +
                 '}';
     }
-
 }

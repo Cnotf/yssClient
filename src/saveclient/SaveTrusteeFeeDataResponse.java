@@ -1,5 +1,5 @@
 
-package client;
+package saveclient;
 
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
@@ -8,12 +8,12 @@ import javax.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>getBiDateResponse complex type�� Java �ࡣ
+ * <p>saveTrusteeFeeDataResponse complex type�� Java �ࡣ
  * 
  * <p>����ģʽƬ��ָ�������ڴ����е�Ԥ�����ݡ�
  * 
  * <pre>
- * &lt;complexType name="getBiDateResponse"&gt;
+ * &lt;complexType name="saveTrusteeFeeDataResponse"&gt;
  *   &lt;complexContent&gt;
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType"&gt;
  *       &lt;sequence&gt;
@@ -27,10 +27,10 @@ import javax.xml.bind.annotation.XmlType;
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "getbidateresponse", propOrder = {
+@XmlType(name = "savetrusteefeedataresponse", propOrder = {
     "_return"
 })
-public class GetBiDateResponse {
+public class SaveTrusteeFeeDataResponse {
 
     @XmlElement(name = "return")
     protected String _return;

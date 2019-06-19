@@ -1,5 +1,5 @@
 
-package client;
+package queryclient;
 
 import javax.xml.bind.annotation.*;
 import java.math.BigDecimal;
@@ -16,6 +16,7 @@ import java.math.BigDecimal;
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType"&gt;
  *       &lt;sequence&gt;
  *         &lt;element name="amt" type="{http://www.w3.org/2001/XMLSchema}decimal" minOccurs="0"/&gt;
+ *         &lt;element name="id" type="{http://www.w3.org/2001/XMLSchema}long" minOccurs="0"/&gt;
  *         &lt;element name="intGrpCd" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/&gt;
  *         &lt;element name="intGrpNm" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/&gt;
  *         &lt;element name="isRltv" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/&gt;
@@ -34,6 +35,7 @@ import java.math.BigDecimal;
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "trusteeFeeInfo", propOrder = {
     "amt",
+    "id",
     "intGrpCd",
     "intGrpNm",
     "isRltv",
@@ -45,6 +47,7 @@ import java.math.BigDecimal;
 public class TrusteeFeeInfo {
 
     protected BigDecimal amt;
+    protected Long id;
     protected String intGrpCd;
     protected String intGrpNm;
     protected String isRltv;
@@ -75,6 +78,30 @@ public class TrusteeFeeInfo {
      */
     public void setAmt(BigDecimal value) {
         this.amt = value;
+    }
+
+    /**
+     * ��ȡid���Ե�ֵ��
+     * 
+     * @return
+     *     possible object is
+     *     {@link Long }
+     *     
+     */
+    public Long getId() {
+        return id;
+    }
+
+    /**
+     * ����id���Ե�ֵ��
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link Long }
+     *     
+     */
+    public void setId(Long value) {
+        this.id = value;
     }
 
     /**
@@ -245,18 +272,19 @@ public class TrusteeFeeInfo {
         this.scrType = value;
     }
 
+
     @Override
     public String toString() {
         return "TrusteeFeeInfo{" +
-                "intGrpCd='" + intGrpCd + '\'' +
-                ", pymDt='" + pymDt + '\'' +
-                ", pymAccNo='" + pymAccNo + '\'' +
+                "amt=" + amt +
+                ", id=" + id +
+                ", intGrpCd='" + intGrpCd + '\'' +
                 ", intGrpNm='" + intGrpNm + '\'' +
-                ", amt=" + amt +
+                ", isRltv='" + isRltv + '\'' +
+                ", pymAccNo='" + pymAccNo + '\'' +
+                ", pymDt='" + pymDt + '\'' +
                 ", rcptAccNo='" + rcptAccNo + '\'' +
                 ", scrType='" + scrType + '\'' +
-                ", isRltv='" + isRltv + '\'' +
                 '}';
     }
-
 }

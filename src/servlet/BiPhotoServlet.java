@@ -1,7 +1,7 @@
 package servlet;
 
-import client.*;
 import org.apache.commons.beanutils.BeanUtils;
+import saveclient.*;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -44,7 +44,7 @@ public class BiPhotoServlet extends HttpServlet {
             }
         } catch (Exception e){
             System.out.println(e.getMessage());
-            retVal = "biPhoto client deal exception,please contact administrator";
+            retVal = "biPhoto saveclient deal exception,please contact administrator";
         } finally {
             out.write( "<script>alert('"+retVal+"');history.go(-1);</script>");
             out.flush();
@@ -60,7 +60,7 @@ public class BiPhotoServlet extends HttpServlet {
      */
     public static String getBiDate(BiDateInfo biDateInfo) {
         YssWebServiceIService yssWebServiceIService = new YssWebServiceIService();
-        YssWebServiceWS yssWebServiceWSPort = yssWebServiceIService.getYssWebServiceWSPort();
-        return yssWebServiceWSPort.getBiDate(biDateInfo);
+        SaveWebServiceWS saveWebServiceWSPort = yssWebServiceIService.getSaveWebServiceWSPort();
+        return saveWebServiceWSPort.saveBiDate(biDateInfo);
     }
 }

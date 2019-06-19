@@ -1,22 +1,23 @@
 
-package client;
+package saveclient;
 
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>getTrusteeFeeData complex type�� Java �ࡣ
+ * <p>saveBiDateResponse complex type�� Java �ࡣ
  * 
  * <p>����ģʽƬ��ָ�������ڴ����е�Ԥ�����ݡ�
  * 
  * <pre>
- * &lt;complexType name="getTrusteeFeeData"&gt;
+ * &lt;complexType name="saveBiDateResponse"&gt;
  *   &lt;complexContent&gt;
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType"&gt;
  *       &lt;sequence&gt;
- *         &lt;element name="arg0" type="{http://com.yss.hello.service}trusteeFeeInfo" minOccurs="0"/&gt;
+ *         &lt;element name="return" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/&gt;
  *       &lt;/sequence&gt;
  *     &lt;/restriction&gt;
  *   &lt;/complexContent&gt;
@@ -26,35 +27,36 @@ import javax.xml.bind.annotation.XmlType;
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "gettrusteefeedata", propOrder = {
-    "arg0"
+@XmlType(name = "savebidateresponse", propOrder = {
+    "_return"
 })
-public class GetTrusteeFeeData {
+public class SaveBiDateResponse {
 
-    protected TrusteeFeeInfo arg0;
+    @XmlElement(name = "return")
+    protected String _return;
 
     /**
-     * ��ȡarg0���Ե�ֵ��
+     * ��ȡreturn���Ե�ֵ��
      * 
      * @return
      *     possible object is
-     *     {@link TrusteeFeeInfo }
+     *     {@link String }
      *     
      */
-    public TrusteeFeeInfo getArg0() {
-        return arg0;
+    public String getReturn() {
+        return _return;
     }
 
     /**
-     * ����arg0���Ե�ֵ��
+     * ����return���Ե�ֵ��
      * 
      * @param value
      *     allowed object is
-     *     {@link TrusteeFeeInfo }
+     *     {@link String }
      *     
      */
-    public void setArg0(TrusteeFeeInfo value) {
-        this.arg0 = value;
+    public void setReturn(String value) {
+        this._return = value;
     }
 
 }

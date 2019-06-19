@@ -1,5 +1,5 @@
 
-package client;
+package saveclient;
 
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
@@ -165,15 +165,15 @@ public class BiDateInfo {
         this.startPhotoDate = value;
     }
 
+
     @Override
     public String toString() {
         return "BiDateInfo{" +
-                "startPhotoDate='" + startPhotoDate + '\'' +
+                "biName='" + biName + '\'' +
+                ", endAccountDate='" + endAccountDate + '\'' +
                 ", endPhotoDate='" + endPhotoDate + '\'' +
                 ", startAccountDate='" + startAccountDate + '\'' +
-                ", endAccountDate='" + endAccountDate + '\'' +
-                ", biName='" + biName + '\'' +
+                ", startPhotoDate='" + startPhotoDate + '\'' +
                 '}';
     }
-
 }
