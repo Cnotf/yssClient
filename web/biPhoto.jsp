@@ -21,7 +21,7 @@
               开始拍照日期：<span style="color:red;">*</span>
             </td>
             <td>
-              <input type="date" name = "beginPhotoDate" class="data-input" required="required">
+              <input type="date" name = "startPhotoDate" class="data-input" required="required">
             </td>
             <td>
               结束拍照日期：<span style="color:red;">*</span>

@@ -24,6 +24,6 @@
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="library" scope="PROVIDED" name="Tomcat 7.0.91" level="application_server_libraries" />
     <orderEntry type="library" name="JAX-WS-Glassfish / JAX-WS 2.2 RI / Metro 1.X / JWSDP 2.2" level="project" />
-    <orderEntry type="library" name="commons-beanutils-1.9.31" level="project" />
+    <orderEntry type="library" name="commons-beanutils-1.9.3" level="project" />
   </component>
 </module>

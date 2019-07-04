@@ -3,6 +3,7 @@ package queryclient;
 
 import javax.xml.bind.annotation.*;
 import java.math.BigDecimal;
+import java.math.BigInteger;
 
 
 /**
@@ -47,7 +48,7 @@ import java.math.BigDecimal;
 public class TrusteeFeeInfo {
 
     protected BigDecimal amt;
-    protected Long id;
+    protected BigInteger id;
     protected String intGrpCd;
     protected String intGrpNm;
     protected String isRltv;
@@ -88,7 +89,7 @@ public class TrusteeFeeInfo {
      *     {@link Long }
      *     
      */
-    public Long getId() {
+    public BigInteger getId() {
         return id;
     }
 
@@ -100,7 +101,7 @@ public class TrusteeFeeInfo {
      *     {@link Long }
      *     
      */
-    public void setId(Long value) {
+    public void setId(BigInteger value) {
         this.id = value;
     }
 

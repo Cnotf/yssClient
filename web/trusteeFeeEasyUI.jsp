@@ -105,12 +105,6 @@
                       editRow = rowIndex;
                   }
               },
-              // onClickRow: function (index, row) {
-              //     // var pymAccNo = row["pymAccNo"];
-              // },
-              // onClickCell: function (rowIndex, field, value) {
-              //     IsCheckFlag = false;
-              // },
               onSelect: function (rowIndex, rowData) {
                   if (editRow != undefined) {
                       datagrid.datagrid("endEdit", editRow);
@@ -129,19 +123,18 @@
               }
           });
 
-          var p = datagrid.datagrid('getPager');
-          console.log(p);
+          /*var p = datagrid.datagrid('getPager');
           $(p).pagination({
-              /*
+              /!*
                   页数文本框前显示的汉字 修改每页默认条数
                   搜索pageList在jquery.easyui.min.js中修改，
                   分页区下拉分页数量集合和默认每页分页条数
                   striped属性 交替行换色
-              */
+              *!/
               beforePageText: '第',
               afterPageText: '页    共 {pages} 页',
               displayMsg: '当前显示 {from}-{to} 条记录,共 {total} 条记录'
-          });
+          });*/
       });
 
       /**
@@ -152,7 +145,7 @@
           $.messager.progress();
           $.ajax({
               type: "post",
-              url: "/trusteeFee?save",
+              url: "<%=request.getContextPath()%>/trusteeFee?save",
               data: JSON.stringify(rows),
               dataType: "text",
               success: function (result) {
