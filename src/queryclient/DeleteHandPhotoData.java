@@ -1,5 +1,7 @@
 
-package saveclient;
+package queryclient;
+
+import saveclient.HandDateInfo;
 
 import javax.xml.bind.annotation.*;
 import java.util.ArrayList;
@@ -7,17 +9,16 @@ import java.util.List;
 
 
 /**
- * <p>saveHandDate complex type�� Java �ࡣ
+ * <p>deleteHandPhotoData complex type�� Java �ࡣ
  * 
  * <p>����ģʽƬ��ָ�������ڴ����е�Ԥ�����ݡ�
  * 
  * <pre>
- * &lt;complexType name="saveHandDate"&gt;
+ * &lt;complexType name="deleteHandPhotoData"&gt;
  *   &lt;complexContent&gt;
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType"&gt;
  *       &lt;sequence&gt;
  *         &lt;element name="arg0" type="{http://services.cnotf.yss.com}handDateInfo" maxOccurs="unbounded" minOccurs="0"/&gt;
- *         &lt;element name="arg1" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/&gt;
  *       &lt;/sequence&gt;
  *     &lt;/restriction&gt;
  *   &lt;/complexContent&gt;
@@ -27,14 +28,12 @@ import java.util.List;
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "savehanddate", propOrder = {
-    "arg0",
-    "arg1"
+@XmlType(name = "deletehandphotodata", propOrder = {
+    "arg0"
 })
-public class SaveHandDate {
+public class DeleteHandPhotoData {
 
     protected List<HandDateInfo> arg0;
-    protected String arg1;
 
     /**
      * Gets the value of the arg0 property.
@@ -63,30 +62,6 @@ public class SaveHandDate {
             arg0 = new ArrayList<HandDateInfo>();
         }
         return this.arg0;
-    }
-
-    /**
-     * ��ȡarg1���Ե�ֵ��
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
-     */
-    public String getArg1() {
-        return arg1;
-    }
-
-    /**
-     * ����arg1���Ե�ֵ��
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
-     */
-    public void setArg1(String value) {
-        this.arg1 = value;
     }
 
 }

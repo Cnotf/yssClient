@@ -49,43 +49,7 @@
                           }
                       }},
               ]],
-              toolbar: [
-                  {
-                      text: '是否关联：<select size="1" id="isRltv"><option value="0">未关联</option><option value="1">已关联</option></select>'
-                  },
-                  {
-                      id: 'searchBtn',
-                      text: '查询',
-                      iconCls: 'icon-search',
-                      handler: function(){
-                          doSearch();
-                      }
-                  },
-                  { text: '关联', iconCls: 'icon-save', handler: function () {
-                      //修改时要获取选择到的行
-                      var rows = datagrid.datagrid("getSelections");
-                      //如果只选择了一行则可以进行修改，否则不操作
-                      if (rows.length == 0) {
-                          $.messager.alert("提示", "请选择至少一条数据！", "info");
-                      } else {
-                          if (editRow != undefined) {
-                              datagrid.datagrid("endEdit", editRow);
-                          }
-                          for (var i in rows) {
-                              if (validation(rows[i].intGrpCd) && validation(rows[i].intGrpNm)) {
-                                  save(rows);
-                              } else {
-                                  $.messager.alert("提示", "投资组合编号和名称不能为空！", "info");
-                              }
-                          }
-
-                      }
-                    }
-                  },
-                  { text: '返回', iconCls: 'icon-undo', handler: function () {
-                          history.go(-1);
-                      }
-                  }],
+              toolbar: '#tb',
               onAfterEdit: function (rowIndex, rowData, changes) {
                   //endEdit该方法触发此事件
                   editRow = undefined;
@@ -152,12 +116,13 @@
                   $.messager.progress('close');
                   if (result == "1") {
                       $.messager.alert("提示", "关联成功！", "info");
+                      doSearch();
                   } else if (result == "2"){
                       $.messager.alert("错误", "服务端处理异常！", "error");
                   } else {
                       $.messager.alert("错误", "关联失败！", "error");
                   }
-                  doSearch();
+
               },
               error: function (result) {
                   $.messager.progress('close');
@@ -178,11 +143,31 @@
       }
 
       function doSearch(){
-          $('#tt').datagrid('load',{
-              isRltv: $('#isRltv').val()
+          $('#tt').datagrid('reload',{
+              isRltv: $('#isRltv').combobox("getValue")
           });
       }
 
+      function guanlian() {
+          //修改时要获取选择到的行
+          var rows = $('#tt').datagrid("getSelections");
+          //如果只选择了一行则可以进行修改，否则不操作
+          if (rows.length == 0) {
+              $.messager.alert("提示", "请选择至少一条数据！", "info");
+          } else {
+              if (editRow != undefined) {
+                  $('#tt').datagrid("endEdit", editRow);
+              }
+              for (var i in rows) {
+                  if (validation(rows[i].intGrpCd) && validation(rows[i].intGrpNm)) {
+                      save(rows);
+                  } else {
+                      $.messager.alert("提示", "投资组合编号和名称不能为空！", "info");
+                  }
+              }
+
+          }
+      }
 
   </script>
 </head>
@@ -190,8 +175,18 @@
 <form id="form1" runat="server">
     <table id="tt">
     </table>
-  </div>
-
+    <div id="tb">
+        <label>
+            是否关联：<input  id="isRltv"  data-options="url:'json/guanlianstatus.json',
+                valueField:'id',
+                textField:'name'" class="easyui-combobox"   editable="false">
+        </label>
+        <label>
+            <a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-search" plain="true" onclick="doSearch()">查询</a>
+            <a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-save" plain="true" onclick="guanlian()">关联</a>
+            <a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-undo" plain="true" onclick="history.go(-1);">返回</a>
+        </label>
+    </div>
 </form>
 </body>
 </html>

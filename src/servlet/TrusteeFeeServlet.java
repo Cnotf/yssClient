@@ -5,7 +5,6 @@ import queryclient.*;
 import saveclient.SaveWebServiceWS;
 import saveclient.YssWebServiceIService;
 
-import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.*;
 import java.io.*;
@@ -38,8 +37,6 @@ public class TrusteeFeeServlet extends HttpServlet {
      * 处理save 返回值
      * @param request
      * @param response
-     * @throws ServletException
-     * @throws IOException
      */
     public static void dealSaveTrusteeFeeData(HttpServletRequest request, HttpServletResponse response){
         PrintWriter out = null;
@@ -80,8 +77,6 @@ public class TrusteeFeeServlet extends HttpServlet {
      * 处理查询返回值
      * @param request
      * @param response
-     * @throws ServletException
-     * @throws IOException
      */
     public static void dealQueryTrusteeFeeData(HttpServletRequest request, HttpServletResponse response){
         PrintWriter out = null;
@@ -91,7 +86,7 @@ public class TrusteeFeeServlet extends HttpServlet {
             response.setCharacterEncoding("UTF-8");
             out = response.getWriter();
             String isRltv = request.getParameter("isRltv");
-            if (isRltv == null) {
+            if (isRltv == null || "".equals(isRltv)) {
                 isRltv = "0";
             }
             TrusteeFeeInfo trusteeFeeInfo = new TrusteeFeeInfo();

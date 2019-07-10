@@ -17,7 +17,7 @@ import java.math.BigInteger;
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType"&gt;
  *       &lt;sequence&gt;
  *         &lt;element name="amt" type="{http://www.w3.org/2001/XMLSchema}decimal" minOccurs="0"/&gt;
- *         &lt;element name="id" type="{http://www.w3.org/2001/XMLSchema}long" minOccurs="0"/&gt;
+ *         &lt;element name="id" type="{http://www.w3.org/2001/XMLSchema}integer" minOccurs="0"/&gt;
  *         &lt;element name="intGrpCd" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/&gt;
  *         &lt;element name="intGrpNm" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/&gt;
  *         &lt;element name="isRltv" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/&gt;
@@ -86,7 +86,7 @@ public class TrusteeFeeInfo {
      * 
      * @return
      *     possible object is
-     *     {@link Long }
+     *     {@link BigInteger }
      *     
      */
     public BigInteger getId() {
@@ -98,7 +98,7 @@ public class TrusteeFeeInfo {
      * 
      * @param value
      *     allowed object is
-     *     {@link Long }
+     *     {@link BigInteger }
      *     
      */
     public void setId(BigInteger value) {
@@ -272,7 +272,6 @@ public class TrusteeFeeInfo {
     public void setScrType(String value) {
         this.scrType = value;
     }
-
 
     @Override
     public String toString() {
