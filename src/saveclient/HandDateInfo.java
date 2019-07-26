@@ -39,7 +39,10 @@ import java.util.Date;
     "photoDate",
     "photoOperationDate",
     "photoStatus",
-    "photoType"
+    "photoType",
+    "page",
+    "rows",
+    "total"
 })
 public class HandDateInfo {
 
@@ -53,6 +56,42 @@ public class HandDateInfo {
     protected String photoOperationDate;
     protected String photoStatus;
     protected String photoType;
+    /**
+     * 页数
+     */
+    protected Integer page;
+    /**
+     * 每页条数
+     */
+    protected Integer rows;
+    /**
+     * 总数
+     */
+    protected Integer total;
+
+    public Integer getTotal() {
+        return total;
+    }
+
+    public void setTotal(Integer total) {
+        this.total = total;
+    }
+
+    public Integer getPage() {
+        return page;
+    }
+
+    public void setPage(Integer page) {
+        this.page = page;
+    }
+
+    public Integer getRows() {
+        return rows;
+    }
+
+    public void setRows(Integer rows) {
+        this.rows = rows;
+    }
 
     /**
      * ��ȡcreateDate���Ե�ֵ��

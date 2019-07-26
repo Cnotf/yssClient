@@ -11,6 +11,8 @@ import java.util.*;
  */
 public class TimerManager {
 
+
+
     //时间间隔:24h
     private static final long PERIOD_DAY = 24 * 60 * 60 * 1000;
     public TimerManager() {
@@ -26,9 +28,12 @@ public class TimerManager {
         calendar.set(Calendar.SECOND, Integer.valueOf(seconds));
 
         Date date = calendar.getTime();     //第一次执行定时任务的时间
+        System.out.println("设置的定时时间" + date);
         //如果当前时间已经过去所定时的时间点，则在第二天时间点开始执行
         if (date.before(new Date())) {
             date = this.addDay(date, Calendar.DAY_OF_MONTH, 1);
+//            date = this.addDay(date, Calendar.MINUTE, 50);
+            System.out.println("由于定时时间早于当前时间，定时推迟到 ：" + date);
         }
         Timer timer = new Timer();
         TimerTaskService task = new TimerTaskService();
@@ -45,4 +50,5 @@ public class TimerManager {
         startDT.add(type, num);
         return startDT.getTime();
     }
+
 }

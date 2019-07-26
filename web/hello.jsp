@@ -13,9 +13,10 @@
       </div>
       <br><br><br><br><br>
       <div class="gcs-login-container">
-        <button id="bi" onclick="tobijsp()" class="btn-login">报表拍照界面</button>
-        <button id="photo" onclick="toPhotojsp()" class="btn-login">手工拍照界面</button>
-        <button id="trusteeFee" onclick="toTrusteeFeeEasyUIjsp()" class="btn-login">托管费信息录入</button>
+        <button id="bi" onclick="tobijsp()" class="btn-login">报表创建</button>
+        <button id="photo" onclick="toPhotojsp()" class="btn-login">拍照</button>
+        <button id="trusteeFee" onclick="toTrusteeFeeEasyUIjsp()" class="btn-login">托管费手工数据</button>
+        <button id="biExcelDownLoad" onclick="tobiExcelDownLoadjsp()" class="btn-login">报表下载</button>
       </div>
     </div>
   </div>
@@ -29,6 +30,9 @@
     }
     function toTrusteeFeeEasyUIjsp() {
         window.location.href = "trusteeFeeEasyUI.jsp";
+    }
+    function tobiExcelDownLoadjsp() {
+        window.location.href = "biExcelDownLoad.jsp";
     }
 </script>
 </html>

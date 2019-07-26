@@ -1,9 +1,9 @@
 
 package saveclient;
 
-import javax.xml.bind.annotation.XmlAccessType;
-import javax.xml.bind.annotation.XmlAccessorType;
-import javax.xml.bind.annotation.XmlType;
+import javax.xml.bind.annotation.*;
+import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
+import java.util.Date;
 
 
 /**
@@ -17,18 +17,23 @@ import javax.xml.bind.annotation.XmlType;
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType"&gt;
  *       &lt;sequence&gt;
  *         &lt;element name="biName" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/&gt;
+ *         &lt;element name="createDate" type="{http://www.w3.org/2001/XMLSchema}dateTime" minOccurs="0"/&gt;
  *         &lt;element name="endAccountDate" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/&gt;
  *         &lt;element name="endPhotoDate" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/&gt;
  *         &lt;element name="lastQuarterAccDate" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/&gt;
  *         &lt;element name="lastQuarterPhotoDate" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/&gt;
  *         &lt;element name="lastYearAccDate" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/&gt;
  *         &lt;element name="lastYearPhotoDate" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/&gt;
+ *         &lt;element name="operate" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/&gt;
+ *         &lt;element name="page" type="{http://www.w3.org/2001/XMLSchema}int" minOccurs="0"/&gt;
  *         &lt;element name="quarterAccDate" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/&gt;
  *         &lt;element name="quarterPhotoDate" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/&gt;
+ *         &lt;element name="rows" type="{http://www.w3.org/2001/XMLSchema}int" minOccurs="0"/&gt;
  *         &lt;element name="startAccountDate" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/&gt;
  *         &lt;element name="startPhotoDate" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/&gt;
  *         &lt;element name="startYearAccDate" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/&gt;
  *         &lt;element name="startYearPhotoDate" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/&gt;
+ *         &lt;element name="total" type="{http://www.w3.org/2001/XMLSchema}int" minOccurs="0"/&gt;
  *       &lt;/sequence&gt;
  *     &lt;/restriction&gt;
  *   &lt;/complexContent&gt;
@@ -40,34 +45,47 @@ import javax.xml.bind.annotation.XmlType;
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "biDateInfo", propOrder = {
     "biName",
+    "createDate",
     "endAccountDate",
     "endPhotoDate",
     "lastQuarterAccDate",
     "lastQuarterPhotoDate",
     "lastYearAccDate",
     "lastYearPhotoDate",
+    "operate",
+    "page",
     "quarterAccDate",
     "quarterPhotoDate",
+    "rows",
     "startAccountDate",
     "startPhotoDate",
     "startYearAccDate",
-    "startYearPhotoDate"
+    "startYearPhotoDate",
+    "total"
 })
 public class BiDateInfo {
 
     protected String biName;
+    @XmlElement(type = String.class)
+    @XmlJavaTypeAdapter(DateTimeAdapter .class)
+    @XmlSchemaType(name = "dateTime")
+    protected Date createDate;
     protected String endAccountDate;
     protected String endPhotoDate;
     protected String lastQuarterAccDate;
     protected String lastQuarterPhotoDate;
     protected String lastYearAccDate;
     protected String lastYearPhotoDate;
+    protected String operate;
+    protected Integer page;
     protected String quarterAccDate;
     protected String quarterPhotoDate;
+    protected Integer rows;
     protected String startAccountDate;
     protected String startPhotoDate;
     protected String startYearAccDate;
     protected String startYearPhotoDate;
+    protected Integer total;
 
     /**
      * ��ȡbiName���Ե�ֵ��
@@ -91,6 +109,30 @@ public class BiDateInfo {
      */
     public void setBiName(String value) {
         this.biName = value;
+    }
+
+    /**
+     * ��ȡcreateDate���Ե�ֵ��
+     * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
+     */
+    public Date getCreateDate() {
+        return createDate;
+    }
+
+    /**
+     * ����createDate���Ե�ֵ��
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
+     */
+    public void setCreateDate(Date value) {
+        this.createDate = value;
     }
 
     /**
@@ -238,6 +280,54 @@ public class BiDateInfo {
     }
 
     /**
+     * ��ȡoperate���Ե�ֵ��
+     * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
+     */
+    public String getOperate() {
+        return operate;
+    }
+
+    /**
+     * ����operate���Ե�ֵ��
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
+     */
+    public void setOperate(String value) {
+        this.operate = value;
+    }
+
+    /**
+     * ��ȡpage���Ե�ֵ��
+     * 
+     * @return
+     *     possible object is
+     *     {@link Integer }
+     *     
+     */
+    public Integer getPage() {
+        return page;
+    }
+
+    /**
+     * ����page���Ե�ֵ��
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link Integer }
+     *     
+     */
+    public void setPage(Integer value) {
+        this.page = value;
+    }
+
+    /**
      * ��ȡquarterAccDate���Ե�ֵ��
      * 
      * @return
@@ -283,6 +373,30 @@ public class BiDateInfo {
      */
     public void setQuarterPhotoDate(String value) {
         this.quarterPhotoDate = value;
+    }
+
+    /**
+     * ��ȡrows���Ե�ֵ��
+     * 
+     * @return
+     *     possible object is
+     *     {@link Integer }
+     *     
+     */
+    public Integer getRows() {
+        return rows;
+    }
+
+    /**
+     * ����rows���Ե�ֵ��
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link Integer }
+     *     
+     */
+    public void setRows(Integer value) {
+        this.rows = value;
     }
 
     /**
@@ -381,23 +495,52 @@ public class BiDateInfo {
         this.startYearPhotoDate = value;
     }
 
+    /**
+     * ��ȡtotal���Ե�ֵ��
+     * 
+     * @return
+     *     possible object is
+     *     {@link Integer }
+     *     
+     */
+    public Integer getTotal() {
+        return total;
+    }
+
+    /**
+     * ����total���Ե�ֵ��
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link Integer }
+     *     
+     */
+    public void setTotal(Integer value) {
+        this.total = value;
+    }
+
 
     @Override
     public String toString() {
         return "BiDateInfo{" +
                 "biName='" + biName + '\'' +
+                ", createDate=" + createDate +
                 ", endAccountDate='" + endAccountDate + '\'' +
                 ", endPhotoDate='" + endPhotoDate + '\'' +
                 ", lastQuarterAccDate='" + lastQuarterAccDate + '\'' +
                 ", lastQuarterPhotoDate='" + lastQuarterPhotoDate + '\'' +
                 ", lastYearAccDate='" + lastYearAccDate + '\'' +
                 ", lastYearPhotoDate='" + lastYearPhotoDate + '\'' +
+                ", operate='" + operate + '\'' +
+                ", page=" + page +
                 ", quarterAccDate='" + quarterAccDate + '\'' +
                 ", quarterPhotoDate='" + quarterPhotoDate + '\'' +
+                ", rows=" + rows +
                 ", startAccountDate='" + startAccountDate + '\'' +
                 ", startPhotoDate='" + startPhotoDate + '\'' +
                 ", startYearAccDate='" + startYearAccDate + '\'' +
                 ", startYearPhotoDate='" + startYearPhotoDate + '\'' +
+                ", total=" + total +
                 '}';
     }
 }

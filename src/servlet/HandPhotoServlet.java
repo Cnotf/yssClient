@@ -1,6 +1,7 @@
 package servlet;
 
 import net.sf.json.JSONArray;
+import net.sf.json.JSONObject;
 import org.apache.commons.beanutils.BeanUtils;
 import queryclient.QueryServiceWS;
 import queryclient.YssQueryServiceIService;
@@ -9,8 +10,7 @@ import saveclient.*;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.*;
 import java.io.*;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 
 /**
  * @Author: cnotf
@@ -61,8 +61,20 @@ public class HandPhotoServlet extends HttpServlet {
                 e.printStackTrace();
             }
             List<HandDateInfo> handDateInfoList = HandPhotoServlet.queryHandDataInfo(handDateInfo);
-            JSONArray jsonArray = JSONArray.fromObject(handDateInfoList);
-            String json = jsonArray.toString();
+
+            //定义map
+            Map<String, Object> jsonMap = new HashMap<String, Object>();
+            //total键 存放总记录数，必须的
+            if (handDateInfoList != null && handDateInfoList.size()>0) {
+                jsonMap.put("total", handDateInfoList.get(0).getTotal());
+            }else {
+                jsonMap.put("total", 0);
+            }
+            jsonMap.put("rows", handDateInfoList);
+            //rows键 存放每页记录 list
+            //格式化result   一定要是JSONObject
+            JSONObject result = JSONObject.fromObject(jsonMap);
+            String json = result.toString();
             out.write(json);
         } catch (Exception e){
             e.printStackTrace();

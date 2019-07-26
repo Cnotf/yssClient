@@ -7,8 +7,8 @@
   <link rel="stylesheet" type="text/css" href="js/jquery-easyui-1.5/themes/default/easyui.css" />
   <link rel="stylesheet" type="text/css" href="js/jquery-easyui-1.5/themes/icon.css" />
   <script type="text/javascript" src="js/jquery-easyui-1.5/jquery.min.js?v=1.1.1"></script>
-  <script type="text/javascript" src="js/jquery-easyui-1.5/jquery.easyui.min.js?v=1.1.2"></script>
-  <script type="text/javascript" src="common.js?v=1.4.9"></script>
+  <script type="text/javascript" src="js/jquery-easyui-1.5/jquery.easyui.min.js?v=1.1.3"></script>
+  <script type="text/javascript" src="common.js?v=1.5.9"></script>
 </head>
 <body>
     <table id="grid">
@@ -65,10 +65,15 @@
                 textField:'name'" class="easyui-combobox" >
         </label>
         <label>
+            拍照类型：<input  id="photoType"  data-options="url:'json/phototype.json?v=1.4.7',
+                valueField:'id',
+                textField:'name'" class="easyui-combobox" >
+        </label>
+        <label>
             <a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-search" plain="true" onclick="doSearch()">查询</a>
             <a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-undo" plain="true" onclick="history.go(-1);">返回</a>
         </label>
-        <label style="padding-left: 29%;">
+        <label style="padding-left: 15%;">
         <a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-add" plain="true" onclick="openWin('hand')">手工拍照</a>
         <%--<a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-save" plain="true" onclick="reportServer('save')">保存</a>--%>
         <a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-edit" plain="true" onclick="editPhoto()">编辑</a>
@@ -83,55 +88,39 @@
             title: "报表拍照",
             url: "<%=request.getContextPath()%>/handPhoto?query",
             width: "100%",
-            height: "600px",
+            height: "613px",
             striped: true,     //交替行换色
             rownumbers: true,  //行号
-            pagination: false,  //显示底部分页
+            pagination: true,  //显示底部分页
             fitColumns: true, //自动适应。先给列随便加个宽度
             toolbar: "#tb",
             checkOnSelect: true, //true，当用户点击行的时候该复选框就会被选中或取消选中。
             selectOnCheck: true, //true，单击复选框将永远选择行。
             columns: [[
                 {field: 'id', title: '选择', width: 100, sortable: true, checkbox: true },
-                {field: 'photoOperationDate', title: '拍照日期', width: 100},
-                {field: 'photoDate', title: '账务日期', width: 200},
+                {field: 'photoOperationDate', title: '拍照日期', width: 150},
+                {field: 'photoDate', title: '账务日期', width: 150},
                 { field: 'createDate', title: '创建时间', width: 100,
                     formatter: function (value, row, index) {
                         return formatDate(value);
                     }},
                 { field: 'photoStatus', title: '拍照状态', width: 100,
                     formatter: function(value,row,index){
-                        if (row.photoStatus == '1'){
-                            return "已拍照";
-                        } else if (row.photoStatus == '0'){
-                            return "未拍照";
-                        }
+                        return getJsonValue('json/photostatus.json',row.photoStatus);
                     }},
                 { field: 'photoType', title: '拍照类型', width: 100,
                     formatter: function(value,row,index){
-                        if (row.photoType == '1'){
-                            return "自动拍照";
-                        } else if (row.photoType == '0'){
-                            return "手工拍照";
-                        } else {
-                            return null;
-                        }
+                         return getJsonValue('json/phototype.json',row.photoType);
                     }}
             ]]
         });
 
-        /*var p = datagrid.datagrid('getPager');
+        var p = $("#grid").datagrid('getPager');
         $(p).pagination({
-            /!*
-                页数文本框前显示的汉字 修改每页默认条数
-                搜索pageList在jquery.easyui.min.js中修改，
-                分页区下拉分页数量集合和默认每页分页条数
-                striped属性 交替行换色
-            *!/
             beforePageText: '第',
             afterPageText: '页    共 {pages} 页',
             displayMsg: '当前显示 {from}-{to} 条记录,共 {total} 条记录'
-        });*/
+        });
     });
 
 
@@ -142,8 +131,8 @@
 
         //账务日期
         var photoDate = $('#photo2').datebox('getValue');
-        if (photoDate !=null && photoDate !="" && myformatter(target) < photoDate ) {
-            $.messager.alert("提示", "该值必须大于等于【账务日期】！", "info");
+        if (photoDate !=null && photoDate !="" && myformatter(target) <= photoDate ) {
+            $.messager.alert("提示", "该值必须大于【账务日期】！", "info");
             $('#photo1').datebox("setValue","");
         }
     }
@@ -152,8 +141,8 @@
 
         //拍照日期
         var photoOperationDate = $('#photo1').datebox('getValue');
-        if (photoOperationDate !=null && photoOperationDate !="" && myformatter(target) > photoOperationDate ) {
-            $.messager.alert("提示", "该值必须小于等于【拍照日期】！", "info");
+        if (photoOperationDate !=null && photoOperationDate !="" && myformatter(target) >= photoOperationDate ) {
+            $.messager.alert("提示", "该值必须小于【拍照日期】！", "info");
             $('#photo2').datebox("setValue","");
         }
 
@@ -206,7 +195,8 @@
         $('#grid').datagrid('reload',{
             photoOperationDate: $('#photoOperationDate').datebox("getValue"),
             photoDate: $('#photoDate').datebox("getValue"),
-            photoStatus: $('#photoStatus').combobox("getValue")
+            photoStatus: $('#photoStatus').combobox("getValue"),
+            photoType: $('#photoType').combobox("getValue")
         });
     }
 

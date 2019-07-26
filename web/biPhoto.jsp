@@ -12,7 +12,7 @@
   <script type="text/javascript" src="common.js?v=1.1.0"></script>
 </head>
 <body>
-<form id="ff" name="ff" action="<%=request.getContextPath()%>/biPhoto" method="post">
+<form id="ff" name="ff" action="<%=request.getContextPath()%>/biPhoto?save" method="post">
   <div class='gcs-login'>
     <div class="gcs-login-panel">
       <div class="login-title">

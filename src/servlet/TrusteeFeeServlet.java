@@ -1,6 +1,8 @@
 package servlet;
 
 import net.sf.json.JSONArray;
+import net.sf.json.JSONObject;
+import org.apache.commons.beanutils.BeanUtils;
 import queryclient.*;
 import saveclient.SaveWebServiceWS;
 import saveclient.YssWebServiceIService;
@@ -8,8 +10,7 @@ import saveclient.YssWebServiceIService;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.*;
 import java.io.*;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 
 /**
  * @Author: cnotf
@@ -85,15 +86,27 @@ public class TrusteeFeeServlet extends HttpServlet {
             response.setContentType("text/html");
             response.setCharacterEncoding("UTF-8");
             out = response.getWriter();
-            String isRltv = request.getParameter("isRltv");
-            if (isRltv == null || "".equals(isRltv)) {
-                isRltv = "0";
-            }
             TrusteeFeeInfo trusteeFeeInfo = new TrusteeFeeInfo();
-            trusteeFeeInfo.setIsRltv(isRltv);
+            try {
+                //查询条件映射到bean中
+                BeanUtils.populate(trusteeFeeInfo, request.getParameterMap());
+            } catch (RuntimeException e) {
+                e.printStackTrace();
+            }
             List<TrusteeFeeInfo> trusteeFeeInfoList = TrusteeFeeServlet.queryTrusteeFeeData(trusteeFeeInfo);
-            JSONArray jsonArray = JSONArray.fromObject(trusteeFeeInfoList);
-            String json = jsonArray.toString();
+            //定义map
+            Map<String, Object> jsonMap = new HashMap<String, Object>();
+            //total键 存放总记录数，必须的
+            if (trusteeFeeInfoList != null && trusteeFeeInfoList.size()>0) {
+                jsonMap.put("total", trusteeFeeInfoList.get(0).getTotal());
+            }else {
+                jsonMap.put("total", 0);
+            }
+            //rows键 存放每页记录 list
+            jsonMap.put("rows", trusteeFeeInfoList);
+            //格式化result   一定要是JSONObject
+            JSONObject result = JSONObject.fromObject(jsonMap);
+            String json = result.toString();
             out.write(json);
         } catch (Exception e){
             e.printStackTrace();

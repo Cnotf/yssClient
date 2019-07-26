@@ -8,7 +8,8 @@
   <link rel="stylesheet" type="text/css" href="js/jquery-easyui-1.5/themes/default/easyui.css" />
   <link rel="stylesheet" type="text/css" href="js/jquery-easyui-1.5/themes/icon.css" />
   <script type="text/javascript" src="js/jquery-easyui-1.5/jquery.min.js?v=1.1.0"></script>
-  <script type="text/javascript" src="js/jquery-easyui-1.5/jquery.easyui.min.js?v=1.1.0"></script>
+  <script type="text/javascript" src="js/jquery-easyui-1.5/jquery.easyui.min.js?v=1.1.2"></script>
+    <script type="text/javascript" src="common.js?v=1.5.9"></script>
   <script type="text/javascript">
       var editRow = undefined; //定义全局变量：当前编辑的行
       $(function () {
@@ -18,13 +19,12 @@
               title: "托管费关联信息",
               url: "<%=request.getContextPath()%>/trusteeFee?query",
               width: "100%",
-              height: "600px",
+              height: "613px",
               striped: true,     //交替行换色
-              rownumbers: true,  //行号
-              pagination: false,  //显示底部分页
+              rownumbers: true,  //行
+              pagination: true,  //显示底部分页
               fitColumns: true,//自动适应。先给列随便加个宽度
-              toolbar: "#tb",
-              checkOnSelect: false, //true，当用户点击行的时候该复选框就会被选中或取消选中。
+              checkOnSelect: true, //true，当用户点击行的时候该复选框就会被选中或取消选中。
               selectOnCheck: true, //true，单击复选框将永远选择行。
               columns: [[
                   {field: 'id', title: '选择', width: 100, sortable: true, checkbox: true },
@@ -42,11 +42,7 @@
                   { field: 'amt', title: '金额', width: 100},
                   { field: 'isRltv', title: '是否关联', width: 100,
                       formatter: function(value,row,index){
-                          if (row.isRltv == '1'){
-                              return "已关联";
-                          } else {
-                              return "未关联";
-                          }
+                          return getJsonValue('json/guanlianstatus.json',row.isRltv);
                       }},
               ]],
               toolbar: '#tb',
@@ -87,18 +83,18 @@
               }
           });
 
-          /*var p = datagrid.datagrid('getPager');
+          var p = datagrid.datagrid('getPager');
           $(p).pagination({
-              /!*
+              /*
                   页数文本框前显示的汉字 修改每页默认条数
                   搜索pageList在jquery.easyui.min.js中修改，
                   分页区下拉分页数量集合和默认每页分页条数
                   striped属性 交替行换色
-              *!/
+              */
               beforePageText: '第',
               afterPageText: '页    共 {pages} 页',
               displayMsg: '当前显示 {from}-{to} 条记录,共 {total} 条记录'
-          });*/
+          });
       });
 
       /**
@@ -179,7 +175,8 @@
         <label>
             是否关联：<input  id="isRltv"  data-options="url:'json/guanlianstatus.json',
                 valueField:'id',
-                textField:'name'" class="easyui-combobox"   editable="false">
+                textField:'name'" class="easyui-combobox" >
+            <%--  editable="false"--%>
         </label>
         <label>
             <a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-search" plain="true" onclick="doSearch()">查询</a>
